@@ -34,7 +34,7 @@
 
 <section class="panel" id="food-footprint">
 <h2>🍽️ Gıdanın Su Ayak İzi ve İsraf Hesaplayıcısı</h2>
-<p>Bir gıda adı yazın, miktarını ve ne kadarının çöpe gittiğini girin. DropAI; o gıdanın tahmini mavi, yeşil ve gri su ayak izini ve israf edilen miktarla ilişkili su kaybını hesaplasın.</p>
+<p>Bir gıda adı yazın, porsiyon miktarını ve çöpe attığınız gramı girin. DropAI, çöpe giden miktarın mavi, yeşil ve gri su ayak izini ayrı ayrı ve toplam olarak hesaplar. Örneğin 150 g portakal çöpe giderse yaklaşık 84 L toplam su ayak izi israf edilmiş olur.</p>
 <div class="food-form">
 <div class="field"><label for="food-name">Gıda adı</label><input id="food-name" list="food-options" placeholder="Örn. ekmek, pirinç, tavuk"><datalist id="food-options"><option value="Ekmek"><option value="Makarna"><option value="Buğday unu"><option value="Buğday"><option value="Pirinç"><option value="Esmer pirinç"><option value="Arpa"><option value="Yulaf"><option value="Mısır"><option value="Çavdar"><option value="Patates"><option value="Tatlı patates"><option value="Domates"><option value="Marul"><option value="Ispanak"><option value="Brokoli"><option value="Karnabahar"><option value="Salatalık"><option value="Kabak"><option value="Patlıcan"><option value="Biber"><option value="Soğan"><option value="Sarımsak"><option value="Yeşil fasulye"><option value="Bezelye"><option value="Havuç"><option value="Elma"><option value="Armut"><option value="Muz"><option value="Kayısı"><option value="Kiraz"><option value="Şeftali"><option value="Erik"><option value="Çilek"><option value="Ahududu"><option value="Yaban mersini"><option value="Üzüm"><option value="Karpuz"><option value="İncir"><option value="Mango"><option value="Avokado"><option value="Ananas"><option value="Hurma"><option value="Kivi"><option value="Papaya"><option value="Portakal"><option value="Mandalina"><option value="Limon"><option value="Kahve"><option value="Çay"><option value="Çikolata"><option value="Dana eti"><option value="Tavuk"><option value="Domuz eti"><option value="Kuzu eti"><option value="Süt"><option value="Yumurta"><option value="Peynir"><option value="Tereyağı"><option value="Mercimek"><option value="Nohut"><option value="Fasulye"><option value="Kuruyemiş"></datalist></div>
 <div class="field"><label for="food-amount">Porsiyon miktarı (gram)</label><input id="food-amount" type="number" min="1" step="1" value="250"></div>
@@ -51,10 +51,10 @@
 <div class="food-metric food-gray"><b>⚪ GRİ SU</b><strong id="food-gray-result">0 L</strong><span>Kirliliği özümsemek için teorik hacim</span></div>
 </div>
 <div class="food-highlight"><b>Porsiyonun toplam su ayak izi</b> <strong id="food-total-result">0 L</strong></div>
-<div class="food-highlight"><b>İsraf edilen miktarla ilişkili mavi su (tatlı su) tüketimi</b> <strong id="food-blue-waste-result">0 L</strong><p>İsraf edilen miktarla ilişkili toplam su ayak izi: <b id="food-total-waste-result">0 L</b></p></div>
+<div class="food-highlight"><b>🗑️ Çöpe atılan miktarın toplam su ayak izi</b><strong id="food-total-waste-result">0 L</strong><p>Bu, çöpe atılan gıdanın üretimiyle ilişkili tahmini su ayak izidir; çöpe dökülen gerçek su miktarı değildir.</p></div><div class="food-results"><div class="food-metric food-green"><b>🟢 İsraf edilen yeşil su</b><strong id="food-green-waste-result">0 L</strong></div><div class="food-metric food-blue"><b>🔵 İsraf edilen mavi su</b><strong id="food-blue-waste-result">0 L</strong></div><div class="food-metric food-gray"><b>⚪ İsraf edilen gri su</b><strong id="food-gray-waste-result">0 L</strong></div></div>
 <div class="food-tip"><b>🌱 Tabağını ve gıdanı koru</b><p id="food-advice"></p></div>
 </div>
-<p class="food-source">Hesaplama nasıl yapılıyor? Veri tabanındaki her ürün için 1 kg başına yeşil, mavi ve gri su ayak izi (L/kg) tanımlıdır. Girilen gram miktarı 1000’e bölünür; her bileşen kendi L/kg değeriyle çarpılır. Örneğin 250 g ürün için değerler 0,25 ile çarpılır. İsraf edilen miktar için de aynı işlem tekrarlanır. Bu nedenle hesaplama, girilen ürün adını veri tabanında eşleştirerek yapılır; listede olmayan ürün için tahmin uydurulmaz.\n\nBilimsel not: Değerler 1996–2005 dönemini temsil eden küresel ortalamalardır. Ülke, iklim, mevsim, üretim sistemi, ürün çeşidi ve tedarik zincirine göre değişebilir. Bazı adlar (ör. baklagiller, kuruyemiş, koyun/keçi eti) tek tek ürün değil, grup ortalamasıdır. Kahve ve çay değerleri kuru ürün içindir; peynir değeri yaklaşık grup değeridir. Mavi su gerçek yüzey/yer altı suyu tüketimini, yeşil su yağış suyunu, gri su ise kirliliği özümsemek için gereken teorik seyreltme hacmini gösterir. Gri su gerçek atık su miktarı değildir.</p>
+<p class="food-source">Hesaplama nasıl yapılıyor? Veri tabanındaki her ürün için 1 kg başına yeşil, mavi ve gri su ayak izi (L/kg) tanımlıdır. Girilen gram miktarı 1000’e bölünür; her bileşen kendi L/kg değeriyle çarpılır. Örneğin 250 g ürün için değerler 0,25 ile çarpılır. İsraf edilen miktar için de aynı işlem tekrarlanır: israf gramı ÷ 1000 × (yeşil + mavi + gri L/kg). Portakalın toplam değeri 560 L/kg olduğundan 150 g çöpe atılırsa 560 × 0,15 = 84 L; 75 g atılırsa 42 L olarak hesaplanır. Bu, atılan portakalın üretimiyle ilişkili su ayak izidir; çöp kutusuna dökülen gerçek su değildir. Ürün adı veri tabanında eşleştirilir; listede olmayan ürün için tahmin uydurulmaz.\n\nBilimsel not: Değerler 1996–2005 dönemini temsil eden küresel ortalamalardır. Ülke, iklim, mevsim, üretim sistemi, ürün çeşidi ve tedarik zincirine göre değişebilir. Bazı adlar (ör. baklagiller, kuruyemiş, koyun/keçi eti) tek tek ürün değil, grup ortalamasıdır. Kahve ve çay değerleri kuru ürün içindir; peynir değeri yaklaşık grup değeridir. Mavi su gerçek yüzey/yer altı suyu tüketimini, yeşil su yağış suyunu, gri su ise kirliliği özümsemek için gereken teorik seyreltme hacmini gösterir. Gri su gerçek atık su miktarı değildir.</p>
 <p class="food-source">Veri kaynakları: <a href="https://hess.copernicus.org/articles/15/1577/2011/" target="_blank" rel="noopener">Mekonnen &amp; Hoekstra (2011), Tablo 3: bitkisel ürünler</a> ve <a href="https://link.springer.com/article/10.1007/s10021-011-9517-8" target="_blank" rel="noopener">Mekonnen &amp; Hoekstra (2012): hayvansal ürünler</a>. Bu çalışmaların küresel ortalama değerleri kullanılmıştır.</p>
 </section>
 </main><script>
@@ -206,15 +206,19 @@ function calcFood(){
  const factor=amount/1000, wasteFactor=waste/1000;
  const green=food.green*factor, blue=food.blue*factor, grey=food.grey*factor;
  const total=green+blue+grey;
+ const wasteGreen=food.green*wasteFactor;
  const wasteBlue=food.blue*wasteFactor;
- const wasteTotal=(food.green+food.blue+food.grey)*wasteFactor;
+ const wasteGrey=food.grey*wasteFactor;
+ const wasteTotal=wasteGreen+wasteBlue+wasteGrey;
  el('food-title').textContent=food.name+' — hesaplama sonucu';
  el('food-rate').textContent='Girilen miktar: '+fmt(amount)+' g. Değerler her kilogram gıda için yayımlanmış küresel ortalamalara göre ölçeklendirildi.';
  el('food-blue-result').textContent=fmt(blue)+' L';
  el('food-green-result').textContent=fmt(green)+' L';
  el('food-gray-result').textContent=fmt(grey)+' L';
  el('food-total-result').textContent=fmt(total)+' L';
+ el('food-green-waste-result').textContent=fmt(wasteGreen)+' L';
  el('food-blue-waste-result').textContent=fmt(wasteBlue)+' L';
+ el('food-gray-waste-result').textContent=fmt(wasteGrey)+' L';
  el('food-total-waste-result').textContent=fmt(wasteTotal)+' L';
  el('food-advice').textContent=food.tip;
  output.hidden=false;
