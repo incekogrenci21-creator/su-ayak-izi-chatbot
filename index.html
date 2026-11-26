@@ -40,11 +40,11 @@
 <div class="food-metric food-green"><b>🟢 YEŞİL SU</b><strong id="food-green-result">0 L</strong><span>Yağış suyu</span></div>
 <div class="food-metric food-gray"><b>⚪ GRİ SU</b><strong id="food-gray-result">0 L</strong><span>Kirliliği özümsemek için teorik hacim</span></div>
 </div>
-<div class="food-highlight">**Porsiyonun toplam su ayak izi** <strong id="food-total-result">0 L</strong></div>
-<div class="food-highlight">**İsraf edilen miktarla ilişkili mavi su (tatlı su) tüketimi** <strong id="food-blue-waste-result">0 L</strong><p>İsraf edilen miktarla ilişkili toplam su ayak izi: <b id="food-total-waste-result">0 L</b></p></div>
+<div class="food-highlight"><b>Porsiyonun toplam su ayak izi</b> <strong id="food-total-result">0 L</strong></div>
+<div class="food-highlight"><b>İsraf edilen miktarla ilişkili mavi su (tatlı su) tüketimi</b> <strong id="food-blue-waste-result">0 L</strong><p>İsraf edilen miktarla ilişkili toplam su ayak izi: <b id="food-total-waste-result">0 L</b></p></div>
 <div class="food-tip"><b>🌱 Tabağını ve gıdanı koru</b><p id="food-advice"></p></div>
 </div>
-<p class="food-source">Bilimsel not: Sonuçlar küresel ortalama değerlerden üretilmiş yaklaşık tahminlerdir; ülke, mevsim, üretim yöntemi ve tedarik zincirine göre değişebilir. Mavi su gerçek yüzey/yer altı suyu tüketimini, yeşil su yağış suyunu, gri su ise kirliliği özümsemek için gereken teorik seyreltme hacmini gösterir. Gri su gerçek atık su miktarı değildir.</p>
+<p class="food-source">Bilimsel not: Sonuçlar 1996–2005 dönemine ait küresel ortalama araştırma verilerinden üretilmiş yaklaşık tahminlerdir; ülke, mevsim, üretim yöntemi ve tedarik zincirine göre değişebilir. Mavi su gerçek yüzey/yer altı suyu tüketimini, yeşil su yağış suyunu, gri su ise kirliliği özümsemek için gereken teorik seyreltme hacmini gösterir. Gri su gerçek atık su miktarı değildir.</p>
 <p class="food-source">Veri kaynakları: <a href="https://hess.copernicus.org/articles/15/1577/2011/" target="_blank" rel="noopener">Mekonnen &amp; Hoekstra (2011), bitkisel ürünler</a> ve <a href="https://link.springer.com/article/10.1007/s10021-011-9517-8" target="_blank" rel="noopener">Mekonnen &amp; Hoekstra (2012), hayvansal ürünler</a>.</p>
 </section>
 </main><script>
@@ -126,13 +126,13 @@ const foodFootprints = [
  {name:'Tavuk eti',aliases:['tavuk','tavuk eti','chicken'],green:3545,blue:313,grey:467,tip:'İhtiyacın kadar tavuk hazırla. Çiğ tavukla temas eden yüzeyleri temizle ve artan pişmiş yemeği uygun sürede buzdolabına kaldır.'},
  {name:'Süt',aliases:['süt','sut','milk'],green:863,blue:86,grey:72,tip:'İçebileceğin miktarda süt al. Açıldıktan sonra ambalajındaki saklama talimatlarına uy.'},
  {name:'Yumurta',aliases:['yumurta','yumurta (kabuklu)','egg','eggs'],green:2592,blue:244,grey:429,tip:'Tarif için gereken yumurta sayısını önceden belirle. Yumurtaları ambalajındaki saklama önerilerine göre muhafaza et.'},
- {name:'Sebze (ortalama grup değeri)',aliases:['sebze','sebzeler','vegetable','vegetables'],green:194,blue:43,grey:85,tip:'Sebzeleri ihtiyacın kadar hazırla. Yıkanmış ve doğranmış sebzeleri uygun kapta, buzdolabında sakla.'},
- {name:'Meyve (ortalama grup değeri)',aliases:['meyve','meyveler','fruit','fruits'],green:726,blue:147,grey:89,tip:'Tüketebileceğin kadar meyve al. Olgunlaşan meyveleri zamanında tüket veya uygun olanları dondurarak değerlendir.'},
+ {name:'Sebze (ortalama grup değeri)',aliases:['sebze','sebzeler','domates','salatalik','salatalık','havuc','havuç','marul','brokoli','vegetable','vegetables','tomato','tomatoes'],green:194,blue:43,grey:85,tip:'Sebzeleri ihtiyacın kadar hazırla. Yıkanmış ve doğranmış sebzeleri uygun kapta, buzdolabında sakla.'},
+ {name:'Meyve (ortalama grup değeri)',aliases:['meyve','meyveler','elma','armut','muz','portakal','mandalina','çilek','cilek','fruit','fruits','apple','banana','orange'],green:726,blue:147,grey:89,tip:'Tüketebileceğin kadar meyve al. Olgunlaşan meyveleri zamanında tüket veya uygun olanları dondurarak değerlendir.'},
  {name:'Patates (nişastalı kökler grubu yaklaşık değeri)',aliases:['patates','potato','potatoes'],green:327,blue:16,grey:43,tip:'Yemeğe koyacağın kadar patates hazırla. Uygun, serin ve kuru koşullarda saklayarak bozulmasını önle.'},
- {name:'Baklagil (ortalama grup değeri)',aliases:['baklagil','baklagiller','mercimek','nohut','fasulye','pulses','legumes'],green:3180,blue:141,grey:734,tip:'Kuru baklagilleri porsiyonlayarak pişir. Artan yemeği uygun şekilde soğutup buzdolabında sakla veya daha sonra kullanmak üzere dondur.'},
- {name:'Kuruyemiş (ortalama grup değeri)',aliases:['kuruyemiş','kuruyemis','badem','ceviz','fındık','findik','nuts'],green:7016,blue:1367,grey:680,tip:'Kuruyemişi küçük porsiyonlar halinde alıp hava almayan kapta sakla; böylece bayatlamasını önleyebilirsin.'}
+ {name:'Baklagil (ortalama grup değeri)',aliases:['baklagil','baklagiller','mercimek','nohut','fasulye','kuru fasulye','pulses','legumes'],green:3180,blue:141,grey:734,tip:'Kuru baklagilleri porsiyonlayarak pişir. Artan yemeği uygun şekilde soğutup buzdolabında sakla veya daha sonra kullanmak üzere dondur.'},
+ {name:'Kuruyemiş (ortalama grup değeri)',aliases:['kuruyemiş','kuruyemis','badem','ceviz','fındık','findik','antep fıstığı','antep fistigi','nuts'],green:7016,blue:1367,grey:680,tip:'Kuruyemişi küçük porsiyonlar halinde alıp hava almayan kapta sakla; böylece bayatlamasını önleyebilirsin.'}
 ];
-function normalizeFood(value){return value.toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\\u0300-\\u036f]/g,'').trim();}
+function normalizeFood(value){return value.toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();}
 function calcFood(){
  const query=normalizeFood(el('food-name').value);
  const amount=Number(el('food-amount').value);
