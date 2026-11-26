@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="tr"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Su ayak izi hesaplama: mavi, yeşil ve gri su bileşenlerini hesaplayın."><meta name="robots" content="index,follow"><title>DropAI | Su Ayak İzi Hesaplama</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,Arial;color:#183247;background:#f3f8fb}header{background:#10334b;color:white;padding:24px max(5%,calc((100% - 1000px)/2))}main{max-width:1000px;margin:36px auto;padding:0 18px}.hero,.panel,.info{background:white;border:1px solid #dce8ef;border-radius:18px;padding:24px;margin-bottom:20px}.hero{background:linear-gradient(120deg,#10334b,#147da0);color:white}.hero h1{font-size:clamp(30px,5vw,48px);margin:0 0 8px}.hero p{margin:0;color:#e1f4fc}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field label{display:block;font-weight:700;margin-bottom:5px}.field input{width:100%;padding:12px;border:1px solid #bdced9;border-radius:9px;font:inherit}.field small{color:#62798a}button{margin-top:18px;border:0;border-radius:9px;background:#087fb6;color:white;padding:12px 20px;font-weight:700;font-size:16px;cursor:pointer}.results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{padding:16px;border:1px solid #dce8ef;border-radius:12px}.metric b{display:block}.metric strong{font-size:25px}.total{margin-top:14px;background:#10334b;color:white;padding:18px;border-radius:12px}.total strong{display:block;font-size:30px}.blue{border-top:4px solid #1686c7}.green{border-top:4px solid #21945b}.gray{border-top:4px solid #8b96a0}.info h2{margin-top:0;color:#10334b}.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.video-card{background:white;border:1px solid #dce8ef;border-radius:16px;padding:18px;margin-bottom:20px}.video-card h2{margin-top:0;color:#10334b}.video-card video{display:block;width:100%;border-radius:10px;background:#071b28;min-height:180px}@media(max-width:650px){.video-grid{grid-template-columns:1fr}}.info p{color:#526a7b}.formula{background:#edf5f9;padding:12px;border-radius:9px;overflow-wrap:anywhere}@media(max-width:650px){.grid,.results{grid-template-columns:1fr}main{margin:18px auto}}
+*{box-sizing:border-box}body{margin:0;font:16px/1.6 system-ui,Arial;color:#183247;background:#f3f8fb}header{background:#10334b;color:white;padding:24px max(5%,calc((100% - 1000px)/2))}main{max-width:1000px;margin:36px auto;padding:0 18px}.hero,.panel,.info{background:white;border:1px solid #dce8ef;border-radius:18px;padding:24px;margin-bottom:20px}.hero{background:linear-gradient(120deg,#10334b,#147da0);color:white}.hero h1{font-size:clamp(30px,5vw,48px);margin:0 0 8px}.hero p{margin:0;color:#e1f4fc}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.field label{display:block;font-weight:700;margin-bottom:5px}.field input{width:100%;padding:12px;border:1px solid #bdced9;border-radius:9px;font:inherit}.field small{color:#62798a}button{margin-top:18px;border:0;border-radius:9px;background:#087fb6;color:white;padding:12px 20px;font-weight:700;font-size:16px;cursor:pointer}.results{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.metric{padding:16px;border:1px solid #dce8ef;border-radius:12px}.metric b{display:block}.metric strong{font-size:25px}.total{margin-top:14px;background:#10334b;color:white;padding:18px;border-radius:12px}.total strong{display:block;font-size:30px}.blue{border-top:4px solid #1686c7}.green{border-top:4px solid #21945b}.gray{border-top:4px solid #8b96a0}.info h2{margin-top:0;color:#10334b}.video-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.video-card{background:white;border:1px solid #dce8ef;border-radius:16px;padding:18px;margin-bottom:20px}.video-card h2{margin-top:0;color:#10334b}.video-card video{display:block;width:100%;border-radius:10px;background:#071b28;min-height:180px}.voice-btn{margin-top:12px;width:100%;background:#087b68}.voice-btn[aria-pressed="true"]{background:#a33b3b}.voice-note{font-size:13px;color:#607789;margin:8px 0 0}@media(max-width:650px){.video-grid{grid-template-columns:1fr}}.info p{color:#526a7b}.formula{background:#edf5f9;padding:12px;border-radius:9px;overflow-wrap:anywhere}@media(max-width:650px){.grid,.results{grid-template-columns:1fr}main{margin:18px auto}}
 </style></head><body><header><strong>DropAI</strong></header><main>
 <section class="hero"><h1>DropAI</h1><p>Mavi, yeşil ve gri su ayak izinizi hesaplayın. Tarımsal üretim ve hidroponik sistemler için eğitim amaçlı ön değerlendirme aracı.</p></section>
 <section class="video-grid" aria-label="DropAI videoları">
-<div class="video-card"><h2>DropAI tanıtım videosu</h2><video controls preload="metadata" playsinline><source src="./su_ayak_izi_chat_tanitim.mp4" type="video/mp4">Tarayıcınız video oynatmayı desteklemiyor.</video></div>
-<div class="video-card"><h2>Su ayak izi nasıl hesaplanır?</h2><video controls preload="metadata" playsinline><source src="./suiz_hesaplama_anlatimi.mp4" type="video/mp4">Tarayıcınız video oynatmayı desteklemiyor.</video></div>
+<div class="video-card"><h2>DropAI tanıtım videosu</h2><video controls preload="metadata" playsinline><source src="./su_ayak_izi_chat_tanitim.mp4" type="video/mp4">Tarayıcınız video oynatmayı desteklemiyor.</video><button class="voice-btn" type="button" data-voice="intro" aria-pressed="false">🔊 Sesli anlatımı başlat</button><p class="voice-note" id="intro-status" aria-live="polite">Kadın Türkçe sesli anlatım için düğmeye basın.</p></div>
+<div class="video-card"><h2>Su ayak izi nasıl hesaplanır?</h2><video controls preload="metadata" playsinline><source src="./suiz_hesaplama_anlatimi.mp4" type="video/mp4">Tarayıcınız video oynatmayı desteklemiyor.</video><button class="voice-btn" type="button" data-voice="calculation" aria-pressed="false">🔊 Sesli anlatımı başlat</button><p class="voice-note" id="calculation-status" aria-live="polite">Kadın Türkçe sesli anlatım için düğmeye basın.</p></div>
 </section>
 <section class="panel"><h2>Su ayak izi hesaplayıcı</h2><p>Değerleri aynı üretim dönemi ve sistem sınırı için girin.</p>
 <div class="grid">
@@ -25,4 +25,70 @@
 const el=id=>document.getElementById(id),fmt=x=>new Intl.NumberFormat('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(x);
 function calc(){const b=Number(el('blue').value),g=Number(el('green').value),l=Number(el('load').value),c=Number(el('limit').value),n=Number(el('natural').value),y=el('yield').value.trim()===''?null:Number(el('yield').value);el('error').textContent='';if([b,g,l,c,n].some(v=>!Number.isFinite(v)||v<0)||(y!==null&&(!Number.isFinite(y)||y<0))){el('error').textContent='Lütfen negatif olmayan geçerli değerler girin.';return}if(l>0&&c<=n){el('error').textContent='Cmax, doğal arka plan değerinden büyük olmalıdır.';return}const gray=l===0?0:l*1000/(c-n),sum=b+g+gray;if(!Number.isFinite(sum)){el('error').textContent='Bu değerlerle hesaplama yapılamadı.';return}el('bo').textContent=fmt(b);el('go').textContent=fmt(g);el('gro').textContent=fmt(gray);el('total').textContent=fmt(sum)+' m³';el('unit').textContent=y>0?'Ürün başına: '+fmt(sum/y)+' m³/ton':(y===0?'Üretim miktarı 0’dan büyük olmalıdır.':'Ürün başına hesap için üretim miktarını girin.')}
 el('calc').addEventListener('click',calc);['blue','green','load','limit','natural','yield'].forEach(id=>el(id).addEventListener('input',calc));calc();
+
+// Tarayıcının yerleşik Türkçe metin-seslendirme özelliğiyle anlatım
+const narrations = {
+  intro: 'DropAI su ayak izi hesaplama aracına hoş geldiniz. Bu site, üretimde kullanılan suyun üç temel bileşenini anlamanıza yardımcı olur. Mavi su, yeşil su ve gri su değerlerinizi girerek toplam su ayak izinizi hesaplayabilirsiniz. Üretim miktarınızı da girerseniz, bir ton ürün başına düşen su ayak izinizi görebilirsiniz. Hesaplamalar eğitim ve ön değerlendirme amaçlıdır. Doğru sonuçlar için kendi ölçüm verilerinizi kullanın.',
+  calculation: 'Su ayak izi üç temel bileşenden oluşur. Birincisi mavi sudur. Üretimde tüketilen yüzey ve yer altı sularını ifade eder. İkincisi yeşil sudur. Yağışla toprağa giren ve bitkilerin kullandığı toprak nemidir. Üçüncüsü gri sudur. Kirletici yükünü belirlenen su kalite sınırına indirebilmek için gereken teorik seyreltme hacmidir. Gri su, gerçek atık su miktarı anlamına gelmez. Gri su hesabında kirletici yükü, bin ile çarpılır ve azami konsantrasyon ile doğal arka plan konsantrasyonu arasındaki farka bölünür. Son olarak mavi, yeşil ve gri su değerleri toplanır. Ürün başına su ayak izini bulmak için toplam değer üretim miktarına bölünür.'
+};
+let activeVoiceButton = null;
+function stopNarration() {
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  document.querySelectorAll('.voice-btn').forEach(btn => {
+    btn.setAttribute('aria-pressed','false');
+    btn.textContent = '🔊 Sesli anlatımı başlat';
+  });
+  activeVoiceButton = null;
+}
+function chooseTurkishVoice() {
+  const voices = window.speechSynthesis.getVoices();
+  const turkish = voices.filter(v => (v.lang || '').toLowerCase().startsWith('tr'));
+  return turkish.find(v => /female| kadın|woman|seda|yelda|filiz|meltem|ays(e|ı)n/i.test(v.name))
+    || turkish[0] || null;
+}
+document.querySelectorAll('.voice-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (!('speechSynthesis' in window) || !('SpeechSynthesisUtterance' in window)) {
+      const status = document.getElementById(btn.dataset.voice + '-status');
+      status.textContent = 'Bu tarayıcı sesli anlatımı desteklemiyor. Güncel Chrome veya Edge deneyebilirsiniz.';
+      return;
+    }
+    if (activeVoiceButton === btn) {
+      stopNarration();
+      document.getElementById(btn.dataset.voice + '-status').textContent = 'Sesli anlatım durduruldu.';
+      return;
+    }
+    stopNarration();
+    const utterance = new SpeechSynthesisUtterance(narrations[btn.dataset.voice]);
+    utterance.lang = 'tr-TR';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.12;
+    const voice = chooseTurkishVoice();
+    if (voice) utterance.voice = voice;
+    activeVoiceButton = btn;
+    btn.setAttribute('aria-pressed','true');
+    btn.textContent = '⏹ Sesli anlatımı durdur';
+    document.getElementById(btn.dataset.voice + '-status').textContent =
+      voice ? 'Türkçe ses kullanılıyor: ' + voice.name : 'Cihazın varsayılan Türkçe sesi kullanılıyor.';
+    utterance.onend = () => {
+      if (activeVoiceButton === btn) {
+        btn.setAttribute('aria-pressed','false');
+        btn.textContent = '🔊 Sesli anlatımı başlat';
+        document.getElementById(btn.dataset.voice + '-status').textContent = 'Anlatım tamamlandı.';
+        activeVoiceButton = null;
+      }
+    };
+    utterance.onerror = () => {
+      if (activeVoiceButton === btn) {
+        btn.setAttribute('aria-pressed','false');
+        btn.textContent = '🔊 Sesli anlatımı başlat';
+        document.getElementById(btn.dataset.voice + '-status').textContent = 'Ses başlatılamadı. Tarayıcı ses ayarlarını kontrol edip yeniden deneyin.';
+        activeVoiceButton = null;
+      }
+    };
+    window.speechSynthesis.speak(utterance);
+  });
+});
+if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => {};
+
 </script></body></html>
