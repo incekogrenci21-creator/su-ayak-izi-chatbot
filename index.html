@@ -254,7 +254,7 @@ function calcFood(){
  const wasteGrey=food.grey*wasteFactor;
  const wasteTotal=wasteGreen+wasteBlue+wasteGrey;
  el('food-title').textContent=food.name+' — hesaplama sonucu';
- el('food-rate').textContent='Girilen miktar: '+fmt(amount)+' g. Değerler araştırmadaki aynı ürün satırının kilogram başına küresel ortalamasıdır; ülkeye ve üretim sistemine göre gerçek değer değişebilir.';
+ el('food-rate').textContent='Porsiyon: '+fmt(amount)+' g → '+fmt(total)+' L toplam su ayak izi. Çöpe giden: '+fmt(waste)+' g → '+fmt(wasteTotal)+' L israf edilen su ayak izi. Bu ekrandaki ilk üç renkli değer porsiyonun tamamını; “İsraf edilen” başlıklı değerler yalnızca çöpe giden miktarı gösterir. Değerler 1996–2005 dönemi küresel ortalamasıdır; üretim yerine göre değişebilir.';
  el('food-blue-result').textContent=fmt(blue)+' L';
  el('food-green-result').textContent=fmt(green)+' L';
  el('food-gray-result').textContent=fmt(grey)+' L';
