@@ -54,8 +54,8 @@
 <div class="food-highlight"><b>İsraf edilen miktarla ilişkili mavi su (tatlı su) tüketimi</b> <strong id="food-blue-waste-result">0 L</strong><p>İsraf edilen miktarla ilişkili toplam su ayak izi: <b id="food-total-waste-result">0 L</b></p></div>
 <div class="food-tip"><b>🌱 Tabağını ve gıdanı koru</b><p id="food-advice"></p></div>
 </div>
-<p class="food-source">Bilimsel not: Sonuçlar 1996–2005 dönemine ait küresel ortalama araştırma verilerinden üretilmiş yaklaşık tahminlerdir; ülke, mevsim, üretim yöntemi ve tedarik zincirine göre değişebilir. Mavi su gerçek yüzey/yer altı suyu tüketimini, yeşil su yağış suyunu, gri su ise kirliliği özümsemek için gereken teorik seyreltme hacmini gösterir. Gri su gerçek atık su miktarı değildir.</p>
-<p class="food-source">Veri kaynakları: <a href="https://hess.copernicus.org/articles/15/1577/2011/" target="_blank" rel="noopener">Mekonnen &amp; Hoekstra (2011), bitkisel ürünler</a> ve <a href="https://link.springer.com/article/10.1007/s10021-011-9517-8" target="_blank" rel="noopener">Mekonnen &amp; Hoekstra (2012), hayvansal ürünler</a>.</p>
+<p class="food-source">Hesaplama nasıl yapılıyor? Veri tabanındaki her ürün için 1 kg başına yeşil, mavi ve gri su ayak izi (L/kg) tanımlıdır. Girilen gram miktarı 1000’e bölünür; her bileşen kendi L/kg değeriyle çarpılır. Örneğin 250 g ürün için değerler 0,25 ile çarpılır. İsraf edilen miktar için de aynı işlem tekrarlanır. Bu nedenle hesaplama, girilen ürün adını veri tabanında eşleştirerek yapılır; listede olmayan ürün için tahmin uydurulmaz.\n\nBilimsel not: Değerler 1996–2005 dönemini temsil eden küresel ortalamalardır. Ülke, iklim, mevsim, üretim sistemi, ürün çeşidi ve tedarik zincirine göre değişebilir. Bazı adlar (ör. baklagiller, kuruyemiş, koyun/keçi eti) tek tek ürün değil, grup ortalamasıdır. Kahve ve çay değerleri kuru ürün içindir; peynir değeri yaklaşık grup değeridir. Mavi su gerçek yüzey/yer altı suyu tüketimini, yeşil su yağış suyunu, gri su ise kirliliği özümsemek için gereken teorik seyreltme hacmini gösterir. Gri su gerçek atık su miktarı değildir.</p>
+<p class="food-source">Veri kaynakları: <a href="https://hess.copernicus.org/articles/15/1577/2011/" target="_blank" rel="noopener">Mekonnen &amp; Hoekstra (2011), Tablo 3: bitkisel ürünler</a> ve <a href="https://link.springer.com/article/10.1007/s10021-011-9517-8" target="_blank" rel="noopener">Mekonnen &amp; Hoekstra (2012): hayvansal ürünler</a>. Bu çalışmaların küresel ortalama değerleri kullanılmıştır.</p>
 </section>
 </main><script>
 const el=id=>document.getElementById(id),fmt=x=>new Intl.NumberFormat('tr-TR',{minimumFractionDigits:2,maximumFractionDigits:2}).format(x);
@@ -129,18 +129,68 @@ if ('speechSynthesis' in window) window.speechSynthesis.onvoiceschanged = () => 
 
 // Küresel ortalama su ayak izi değerleri (litre/kg): [yeşil, mavi, gri]
 const foodFootprints = [
- {name:'Ekmek (buğday)',aliases:['ekmek','bread'],green:1124,blue:301,grey:183,tip:'Yiyebileceğin kadar ekmek al. Artan ekmeği uygun koşullarda sakla; daha sonra tüketemeyeceksen güvenli biçimde dondur.'},
- {name:'Makarna (kuru)',aliases:['makarna','pasta'],green:1292,blue:347,grey:210,tip:'Pişirmeden önce yiyeceğin kadar makarna ölç. Artan pişmiş makarnayı hızlıca soğutup buzdolabında uygun şekilde sakla.'},
- {name:'Pirinç (tahıl grubu yaklaşık değeri)',aliases:['pirinç','pirinc','pilav','rice'],green:1232,blue:228,grey:184,tip:'Pişireceğin kişi sayısına göre pirinç ölç. Artan pilavı oda sıcaklığında uzun süre bekletmeden uygun şekilde soğutup buzdolabına kaldır.'},
- {name:'Dana eti',aliases:['dana eti','dana','sığır eti','sigir eti','kırmızı et','kirmizi et','beef'],green:14414,blue:550,grey:451,tip:'Porsiyonunu önceden planla. Eti güvenli soğuk zincirde sakla ve son kullanma tarihini takip et.'},
+ // Bitkisel ürünler: Mekonnen & Hoekstra (2011), tablo 3; L/kg = m³/ton
+ {name:'Buğday ekmeği',aliases:['ekmek','buğday ekmeği','bugday ekmegi','tam buğday ekmeği','beyaz ekmek','bread'],green:1124,blue:301,grey:183,tip:'Yiyebileceğin kadar ekmek al. Artan ekmeği uygun koşullarda sakla veya daha sonra kullanmak üzere dondur.'},
+ {name:'Kuru makarna',aliases:['makarna','kuru makarna','spagetti','penne','pasta'],green:1292,blue:347,grey:210,tip:'Pişirmeden önce yiyeceğin kadar makarna ölç. Artan pişmiş makarnayı hızla soğutup buzdolabında uygun şekilde sakla.'},
+ {name:'Buğday unu',aliases:['un','buğday unu','bugday unu'],green:1292,blue:347,grey:210,tip:'Tarifindeki miktarı ölçerek kullan; unu kuru ve kapalı bir kapta sakla.'},
+ {name:'Buğday (tane)',aliases:['buğday','bugday','wheat'],green:1277,blue:342,grey:207,tip:'İhtiyacın kadar satın al ve kuru, serin bir yerde sakla.'},
+ {name:'Pirinç (kahverengi/kabuklu)',aliases:['kahverengi pirinç','esmer pirinç','esmer pirinc','brown rice'],green:1488,blue:443,grey:242,tip:'Pişireceğin kişi sayısına göre kuru pirinç ölç. Pişmiş pilavı oda sıcaklığında uzun süre bekletmeden soğutup buzdolabına kaldır.'},
+ {name:'Pirinç (kırık/işlenmiş pirinç referansı)',aliases:['pirinç','pirinc','beyaz pirinç','beyaz pirinc','rice'],green:1710,blue:509,grey:278,tip:'Kuru pirinci porsiyonlayarak pişir. Artan pilavı güvenli şekilde soğutup buzdolabında sakla.'},
+ {name:'Arpa',aliases:['arpa','barley'],green:1213,blue:79,grey:131,tip:'Arpayı ihtiyacın kadar pişir; kuru ürünü nemden uzak sakla.'},
+ {name:'Yulaf',aliases:['yulaf','yulaf ezmesi','oats'],green:1479,blue:181,grey:128,tip:'Kaseye yiyeceğin kadar yulaf koy. Paketi kapalı ve kuru tut.'},
+ {name:'Mısır',aliases:['mısır','misir','darı mısır','corn','maize'],green:947,blue:81,grey:194,tip:'Mısırı porsiyonlayarak hazırla; artanı uygun şekilde soğutup sakla.'},
+ {name:'Çavdar',aliases:['çavdar','cavdar','rye'],green:1419,blue:25,grey:99,tip:'Çavdar ekmeği veya ürünlerini ihtiyacın kadar al; bayatlamadan tüket veya dondur.'},
+ {name:'Patates',aliases:['patates','potato'],green:191,blue:33,grey:63,tip:'Patatesi serin, kuru ve karanlık bir yerde sakla; filizlenen veya bozulanları ayır.'},
+ {name:'Tatlı patates',aliases:['tatlı patates','tatli patates','sweet potato'],green:324,blue:5,grey:53,tip:'İhtiyacın kadar hazırla; kuru ve serin koşullarda sakla.'},
+ {name:'Domates',aliases:['domates','tomato','tomatoes'],green:108,blue:63,grey:43,tip:'Olgun domatesleri zamanında tüket; fazla olanları yemek veya sos yapımında değerlendir.'},
+ {name:'Marul',aliases:['marul','lettuce'],green:133,blue:28,grey:77,tip:'Marulu ihtiyacın kadar yıka ve doğra; kalanını uygun kapta buzdolabında sakla.'},
+ {name:'Ispanak',aliases:['ıspanak','ispanak','spinach'],green:118,blue:14,grey:160,tip:'Ispanağı pişireceğin kadar hazırla; yıkanmış yaprakları uygun kapta soğukta sakla.'},
+ {name:'Brokoli ve karnabahar',aliases:['brokoli','karnabahar','cauliflower'],green:189,blue:21,grey:75,tip:'Yalnızca kullanacağın miktarı ayır; kalanını uygun koşullarda buzdolabında sakla.'},
+ {name:'Salatalık',aliases:['salatalık','salatalik','hıyar','hiyar','cucumber'],green:206,blue:42,grey:105,tip:'Salatalığı ihtiyacın kadar dilimle; kesilmiş kısmı kapalı kapta buzdolabına koy.'},
+ {name:'Kabak',aliases:['kabak','balkabağı','balkabagi','pumpkin'],green:228,blue:24,grey:84,tip:'Kabağı porsiyonlayarak pişir; artan yemeği uygun şekilde soğutup sakla.'},
+ {name:'Patlıcan',aliases:['patlıcan','patlican','eggplant'],green:234,blue:33,grey:95,tip:'İhtiyacın kadar doğra ve pişir; kesilmiş patlıcanı uzun süre açıkta bırakma.'},
+ {name:'Biber',aliases:['biber','yeşil biber','yesil biber','dolmalık biber','dolmalik biber'],green:240,blue:42,grey:97,tip:'Biberleri taze tüket veya ihtiyacın kadarını doğrayıp uygun şekilde dondur.'},
+ {name:'Soğan',aliases:['soğan','sogan','kuru soğan','kuru sogan','onion'],green:192,blue:88,grey:65,tip:'Soğanı kuru, serin ve havadar yerde sakla; kesilmiş parçayı kapalı kapta buzdolabına koy.'},
+ {name:'Sarımsak',aliases:['sarımsak','sarimsak','garlic'],green:337,blue:81,grey:170,tip:'Sarımsağı kuru ve havadar yerde sakla; yalnızca kullanacağın miktarı ayıkla.'},
+ {name:'Yeşil fasulye',aliases:['yeşil fasulye','yesil fasulye','taze fasulye','green beans'],green:320,blue:54,grey:188,tip:'Taze fasulyeyi ihtiyacın kadar ayıkla; fazlasını uygun şekilde dondurabilirsin.'},
+ {name:'Bezelye',aliases:['bezelye','green peas'],green:382,blue:63,grey:150,tip:'Bezelyeyi porsiyonlayarak kullan; artanını uygun kapta dondur.'},
+ {name:'Havuç',aliases:['havuç','havuc','carrot'],green:106,blue:28,grey:61,tip:'Havuçları uygun koşullarda sakla; soyduğun kabukları kompost için değerlendirebilirsin.'},
+ {name:'Elma',aliases:['elma','apple','apples'],green:561,blue:133,grey:127,tip:'Elmayı uygun serinlikte sakla; yumuşamaya başlayanları komposto veya başka tariflerde değerlendir.'},
+ {name:'Armut',aliases:['armut','pear'],green:645,blue:94,grey:183,tip:'Olgun armutları zamanında tüket; fazlasını uygun tariflerde değerlendir.'},
+ {name:'Muz',aliases:['muz','banana','bananas'],green:660,blue:97,grey:33,tip:'Muzları olgunluklarına göre tüket; çok olgunlaşanları smoothie veya tariflerde kullan.'},
+ {name:'Kayısı',aliases:['kayısı','kayisi','apricot'],green:694,blue:502,grey:92,tip:'Kayısıları olgunlaşma durumuna göre tüket; fazlasını uygun şekilde dondur veya kurut.'},
+ {name:'Kiraz',aliases:['kiraz','cherry'],green:961,blue:531,grey:112,tip:'Kirazı yıkadıktan sonra tüket; ezilenleri bekletmeden değerlendir.'},
+ {name:'Şeftali',aliases:['şeftali','seftali','peach','nektarin','nectarine'],green:583,blue:188,grey:139,tip:'Olgun şeftalileri zamanında tüket; fazlasını dilimleyip dondurabilirsin.'},
+ {name:'Erik',aliases:['erik','plum'],green:1570,blue:188,grey:422,tip:'Erikleri olgunlaşmadan ezilmeyecek şekilde sakla; fazlasını komposto yapımında kullan.'},
+ {name:'Çilek',aliases:['çilek','cilek','strawberry'],green:201,blue:109,grey:37,tip:'Çileği tüketmeden hemen önce yıka; ezilmiş olanları bekletmeden değerlendir.'},
+ {name:'Ahududu',aliases:['ahududu','raspberry'],green:293,blue:53,grey:67,tip:'Hassas meyveleri az miktarda al ve kısa sürede tüket.'},
+ {name:'Yaban mersini',aliases:['yaban mersini','blueberry'],green:341,blue:334,grey:170,tip:'Yaban mersinini soğukta sakla; tüketemeyeceğin fazlayı dondur.'},
+ {name:'Üzüm',aliases:['üzüm','uzum','grapes'],green:425,blue:97,grey:87,tip:'Üzümü ihtiyacın kadar yıka; kalan salkımı buzdolabında sakla.'},
+ {name:'Karpuz',aliases:['karpuz','watermelon'],green:147,blue:25,grey:63,tip:'Karpuzu kesmeden önce temizle; kesilmiş parçaları kapalı kapta buzdolabında sakla.'},
+ {name:'İncir',aliases:['incir','incir'],green:1527,blue:1595,grey:228,tip:'Taze inciri kısa sürede tüket; fazlasını uygun şekilde kurutarak değerlendirebilirsin.'},
+ {name:'Mango',aliases:['mango'],green:1314,blue:362,grey:124,tip:'Olgun mango zamanında tüketilmeli; fazlasını doğrayıp dondurabilirsin.'},
+ {name:'Avokado',aliases:['avokado','avocado'],green:849,blue:283,grey:849,tip:'Avokadoyu olgunlaştığında tüket; kesilmiş yarısını çekirdeğiyle kapalı kapta buzdolabında sakla.'},
+ {name:'Ananas',aliases:['ananas','pineapple'],green:215,blue:9,grey:31,tip:'Ananası dilimleyip kapalı kapta soğukta sakla; yiyeceğin kadar kes.'},
+ {name:'Hurma',aliases:['hurma','dates'],green:930,blue:1250,grey:98,tip:'Hurmaları kapalı kapta sakla ve porsiyonlayarak tüket.'},
+ {name:'Kivi',aliases:['kivi','kiwi'],green:307,blue:168,grey:38,tip:'Kivileri olgunluklarına göre tüket; kesilmiş kiviyi kapalı kapta buzdolabına koy.'},
+ {name:'Papaya',aliases:['papaya'],green:399,blue:40,grey:21,tip:'Olgun papayayı zamanında tüket; artanı kapalı kapta soğukta sakla.'},
+ {name:'Portakal',aliases:['portakal','orange','oranges'],green:401,blue:110,grey:49,tip:'Portakalı taze tüket; sıkacağın zaman ihtiyacın kadarını hazırla.'},
+ {name:'Mandalina',aliases:['mandalina','tangerine'],green:479,blue:118,grey:152,tip:'Mandalinaları serin yerde sakla ve bozulmadan tüket.'},
+ {name:'Limon',aliases:['limon','lemon'],green:432,blue:152,grey:58,tip:'Limonun tamamını kullanmaya çalış; kalan kesilmiş parçayı kapalı kapta soğukta sakla.'},
+ {name:'Kahve (kavrulmuş çekirdek)',aliases:['kahve','kahve çekirdeği','kahve cekirdegi','coffee'],green:18153,blue:139,grey:633,tip:'İçeceğin kadar kahve öğüt veya hazırla; kahveyi hava almayan kapta sakla.'},
+ {name:'Çay (kuru yaprak)',aliases:['çay','cay','siyah çay','siyah cay','yeşil çay','yesil cay','tea'],green:7232,blue:898,grey:726,tip:'Demleyeceğin kadar çay kullan; artan demli çayı uzun süre bekletme.'},
+ {name:'Çikolata',aliases:['çikolata','cikolata','chocolate'],green:16805,blue:198,grey:193,tip:'İhtiyacın kadar al; çikolatayı serin ve kuru yerde sakla.'},
+ // Hayvansal ürünler: Mekonnen & Hoekstra (2012), tablo 3 ve tablo 6
+ {name:'Dana eti',aliases:['dana eti','dana','sığır eti','sigir eti','kırmızı et','kirmizi et','beef'],green:14414,blue:550,grey:451,tip:'Porsiyonunu önceden planla. Eti güvenli soğuk zincirde sakla ve ambalajındaki saklama talimatlarına uy.'},
  {name:'Tavuk eti',aliases:['tavuk','tavuk eti','chicken'],green:3545,blue:313,grey:467,tip:'İhtiyacın kadar tavuk hazırla. Çiğ tavukla temas eden yüzeyleri temizle ve artan pişmiş yemeği uygun sürede buzdolabına kaldır.'},
+ {name:'Domuz eti (küresel ortalama)',aliases:['domuz eti','pork'],green:4907,blue:459,grey:622,tip:'Porsiyonunu planla ve ürünün saklama talimatlarına uy.'},
+ {name:'Koyun ve keçi eti (grup ortalaması)',aliases:['koyun eti','kuzu eti','kuzu','keçi eti','keci eti','sheep meat','goat meat'],green:8253,blue:457,grey:53,tip:'Porsiyonunu önceden planla; eti güvenli soğuk zincirde sakla.'},
  {name:'Süt',aliases:['süt','sut','milk'],green:863,blue:86,grey:72,tip:'İçebileceğin miktarda süt al. Açıldıktan sonra ambalajındaki saklama talimatlarına uy.'},
- {name:'Yumurta',aliases:['yumurta','yumurta (kabuklu)','egg','eggs'],green:2592,blue:244,grey:429,tip:'Tarif için gereken yumurta sayısını önceden belirle. Yumurtaları ambalajındaki saklama önerilerine göre muhafaza et.'},
- {name:'Sebze (ortalama grup değeri)',aliases:['sebze','sebzeler','domates','salatalik','salatalık','havuc','havuç','marul','brokoli','vegetable','vegetables','tomato','tomatoes'],green:194,blue:43,grey:85,tip:'Sebzeleri ihtiyacın kadar hazırla. Yıkanmış ve doğranmış sebzeleri uygun kapta, buzdolabında sakla.'},
- {name:'Meyve (ortalama grup değeri)',aliases:['meyve','meyveler','elma','armut','muz','portakal','mandalina','çilek','cilek','fruit','fruits','apple','banana','orange'],green:726,blue:147,grey:89,tip:'Tüketebileceğin kadar meyve al. Olgunlaşan meyveleri zamanında tüket veya uygun olanları dondurarak değerlendir.'},
- {name:'Patates (nişastalı kökler grubu yaklaşık değeri)',aliases:['patates','potato','potatoes'],green:327,blue:16,grey:43,tip:'Yemeğe koyacağın kadar patates hazırla. Uygun, serin ve kuru koşullarda saklayarak bozulmasını önle.'},
- {name:'Baklagil (ortalama grup değeri)',aliases:['baklagil','baklagiller','mercimek','nohut','fasulye','kuru fasulye','pulses','legumes'],green:3180,blue:141,grey:734,tip:'Kuru baklagilleri porsiyonlayarak pişir. Artan yemeği uygun şekilde soğutup buzdolabında sakla veya daha sonra kullanmak üzere dondur.'},
- {name:'Kuruyemiş (ortalama grup değeri)',aliases:['kuruyemiş','kuruyemis','badem','ceviz','fındık','findik','antep fıstığı','antep fistigi','nuts'],green:7016,blue:1367,grey:680,tip:'Kuruyemişi küçük porsiyonlar halinde alıp hava almayan kapta sakla; böylece bayatlamasını önleyebilirsin.'}
+ {name:'Yumurta',aliases:['yumurta','egg','eggs'],green:2592,blue:244,grey:429,tip:'Tarif için gereken yumurta sayısını önceden belirle. Yumurtaları ambalajındaki saklama önerilerine göre muhafaza et.'},
+ {name:'Peynir (inek sütünden, yaklaşık)',aliases:['peynir','kaşar','kasar','beyaz peynir','cheese'],green:2701,blue:254,grey:223,tip:'Peyniri ambalajındaki saklama koşullarına göre muhafaza et; bozulmadan tüketebileceğin miktarda al.'},
+ {name:'Tereyağı',aliases:['tereyağı','tereyagi','butter'],green:4695,blue:465,grey:393,tip:'Tereyağını kapalı ambalajda ve uygun soğukta sakla; ihtiyacın kadar kullan.'},
+ {name:'Baklagiller (ortalama grup değeri)',aliases:['baklagil','baklagiller','mercimek','nohut','fasulye','kuru fasulye','pulses','legumes'],green:3180,blue:141,grey:734,tip:'Kuru baklagilleri porsiyonlayarak pişir. Artan yemeği uygun şekilde soğutup buzdolabında sakla veya dondur.'},
+ {name:'Kuruyemiş (ortalama grup değeri)',aliases:['kuruyemiş','kuruyemis','badem','ceviz','fındık','findik','antep fıstığı','antep fistigi','yer fıstığı','yer fistigi','nuts'],green:7016,blue:1367,grey:680,tip:'Kuruyemişi küçük porsiyonlar halinde alıp hava almayan kapta sakla; böylece bayatlamasını önleyebilirsin.'}
 ];
 function normalizeFood(value){return value.toLocaleLowerCase('tr-TR').normalize('NFD').replace(/[\u0300-\u036f]/g,'').trim();}
 function calcFood(){
@@ -152,7 +202,7 @@ function calcFood(){
  if(!query){error.textContent='Lütfen bir gıda adı yazın.';return}
  if(!Number.isFinite(amount)||amount<=0||!Number.isFinite(waste)||waste<0||waste>amount){error.textContent='Porsiyon 0’dan büyük olmalı; israf miktarı 0 ile porsiyon miktarı arasında olmalı.';return}
  const food=foodFootprints.find(item=>item.aliases.some(alias=>normalizeFood(alias)===query));
- if(!food){error.textContent='Bu gıda listede bulunamadı. Şimdilik ekmek, makarna, pirinç, dana eti, tavuk, süt, yumurta, sebze, meyve, patates, baklagil veya kuruyemiş deneyin.';return}
+ if(!food){error.textContent='Bu gıda henüz veri tabanında yok. Listede ekmek, tahıllar, birçok sebze ve meyve, et, süt ürünleri, baklagiller, kahve, çay ve çikolata gibi seçenekler bulunuyor. Lütfen yakın bir ürün adı deneyin.';return}
  const factor=amount/1000, wasteFactor=waste/1000;
  const green=food.green*factor, blue=food.blue*factor, grey=food.grey*factor;
  const total=green+blue+grey;
